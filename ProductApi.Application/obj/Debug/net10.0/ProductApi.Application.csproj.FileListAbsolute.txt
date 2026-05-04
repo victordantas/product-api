@@ -1,0 +1,16 @@
+/workspaces/product-api/ProductApi.Application/obj/Debug/net10.0/ProductApi.Application.csproj.AssemblyReference.cache
+/workspaces/product-api/ProductApi.Application/obj/Debug/net10.0/ProductApi.Application.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/product-api/ProductApi.Application/obj/Debug/net10.0/ProductApi.Application.AssemblyInfoInputs.cache
+/workspaces/product-api/ProductApi.Application/obj/Debug/net10.0/ProductApi.Application.AssemblyInfo.cs
+/workspaces/product-api/ProductApi.Application/obj/Debug/net10.0/ProductApi.Application.csproj.CoreCompileInputs.cache
+/workspaces/product-api/ProductApi.Application/obj/Debug/net10.0/ProductApi.Application.sourcelink.json
+/workspaces/product-api/ProductApi.Application/bin/Debug/net10.0/ProductApi.Application.deps.json
+/workspaces/product-api/ProductApi.Application/bin/Debug/net10.0/ProductApi.Application.dll
+/workspaces/product-api/ProductApi.Application/bin/Debug/net10.0/ProductApi.Application.pdb
+/workspaces/product-api/ProductApi.Application/bin/Debug/net10.0/ProductApi.Domain.dll
+/workspaces/product-api/ProductApi.Application/bin/Debug/net10.0/ProductApi.Domain.pdb
+/workspaces/product-api/ProductApi.Application/obj/Debug/net10.0/ProductA.E443A747.Up2Date
+/workspaces/product-api/ProductApi.Application/obj/Debug/net10.0/ProductApi.Application.dll
+/workspaces/product-api/ProductApi.Application/obj/Debug/net10.0/refint/ProductApi.Application.dll
+/workspaces/product-api/ProductApi.Application/obj/Debug/net10.0/ProductApi.Application.pdb
+/workspaces/product-api/ProductApi.Application/obj/Debug/net10.0/ref/ProductApi.Application.dll
