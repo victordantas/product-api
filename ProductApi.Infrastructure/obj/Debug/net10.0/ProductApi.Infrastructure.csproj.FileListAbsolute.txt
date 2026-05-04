@@ -1,9 +1,8 @@
 /workspaces/product-api/ProductApi.Infrastructure/bin/Debug/net10.0/ProductApi.Infrastructure.deps.json
+/workspaces/product-api/ProductApi.Infrastructure/bin/Debug/net10.0/ProductApi.Infrastructure.runtimeconfig.json
 /workspaces/product-api/ProductApi.Infrastructure/bin/Debug/net10.0/ProductApi.Infrastructure.dll
 /workspaces/product-api/ProductApi.Infrastructure/bin/Debug/net10.0/ProductApi.Infrastructure.pdb
-/workspaces/product-api/ProductApi.Infrastructure/bin/Debug/net10.0/ProductApi.Application.dll
 /workspaces/product-api/ProductApi.Infrastructure/bin/Debug/net10.0/ProductApi.Domain.dll
-/workspaces/product-api/ProductApi.Infrastructure/bin/Debug/net10.0/ProductApi.Application.pdb
 /workspaces/product-api/ProductApi.Infrastructure/bin/Debug/net10.0/ProductApi.Domain.pdb
 /workspaces/product-api/ProductApi.Infrastructure/obj/Debug/net10.0/ProductApi.Infrastructure.csproj.AssemblyReference.cache
 /workspaces/product-api/ProductApi.Infrastructure/obj/Debug/net10.0/ProductApi.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
@@ -15,4 +14,5 @@
 /workspaces/product-api/ProductApi.Infrastructure/obj/Debug/net10.0/ProductApi.Infrastructure.dll
 /workspaces/product-api/ProductApi.Infrastructure/obj/Debug/net10.0/refint/ProductApi.Infrastructure.dll
 /workspaces/product-api/ProductApi.Infrastructure/obj/Debug/net10.0/ProductApi.Infrastructure.pdb
+/workspaces/product-api/ProductApi.Infrastructure/obj/Debug/net10.0/ProductApi.Infrastructure.genruntimeconfig.cache
 /workspaces/product-api/ProductApi.Infrastructure/obj/Debug/net10.0/ref/ProductApi.Infrastructure.dll
