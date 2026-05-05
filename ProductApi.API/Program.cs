@@ -7,6 +7,7 @@ using ProductApi.Application.Products.Queries.GetProductById;
 using FluentValidation;
 using ProductApi.Application.Products.Commands.UpdateProduct;
 using ProductApi.Application.Products.Commands.DeleteProduct;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,10 @@ builder.Services.AddMediatR(cfg =>
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=products.db"));
+
+builder.Host.UseSerilog((ctx, lc) => lc
+    .WriteTo.Console()
+    .ReadFrom.Configuration(ctx.Configuration));
 
 var app = builder.Build();
 
@@ -36,59 +41,8 @@ app.UseSwaggerUI(options =>
     options.RoutePrefix = string.Empty;
 });
 
-app.MapPost("/products", async (CreateProductCommand cmd, IMediator mediator) =>
-{
-    try
-    {
-        var id = await mediator.Send(cmd);
-        return Results.Created($"/products/{id}", id);
-    }
-    catch (ValidationException ex)
-    {
-        return Results.BadRequest(new { Errors = ex.Errors.Select(e => e.ErrorMessage) });
-    }
-});
+app.UseMiddleware<ExceptionMiddleware>();
+app.UseSerilogRequestLogging();
 
-
-app.MapGet("/products", async (IMediator mediator) =>
-{
-    var result = await mediator.Send(new GetProductsQuery());
-    return Results.Ok(result);
-});
-
-app.MapGet("/products/{id:guid}", async (Guid id, IMediator mediator) =>
-{
-    var result = await mediator.Send(new GetProductByIdQuery(id));
-    return result is null ? Results.NotFound() : Results.Ok(result);
-});
-
-app.MapPut("/products/{id:guid}", async (Guid id, UpdateProductCommand cmd, IMediator mediator) =>
-{
-    if (id != cmd.Id)
-        return Results.BadRequest();
-
-    try
-    {
-        var result = await mediator.Send(cmd);
-        return result ? Results.NoContent() : Results.NotFound();
-    }
-    catch (ValidationException ex)
-    {
-        return Results.BadRequest(new { Errors = ex.Errors.Select(e => e.ErrorMessage) });
-    }
-});
-
-app.MapDelete("/products/{id:guid}", async (Guid id, IMediator mediator) =>
-{
-    try
-    {
-        var result = await mediator.Send(new DeleteProductCommand(id));
-        return result ? Results.NoContent() : Results.NotFound();
-    }
-    catch (ValidationException ex)
-    {
-        return Results.BadRequest(new { Errors = ex.Errors.Select(e => e.ErrorMessage) });
-    }
-});
-
+app.MapProductEndpoints();
 app.Run();
