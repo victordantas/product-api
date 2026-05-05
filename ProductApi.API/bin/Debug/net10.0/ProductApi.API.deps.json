@@ -10,6 +10,7 @@
         "dependencies": {
           "FluentValidation.AspNetCore": "11.3.1",
           "Microsoft.AspNetCore.OpenApi": "10.0.4",
+          "Microsoft.OpenApi": "2.4.1",
           "ProductApi.Application": "1.0.0",
           "Serilog.AspNetCore": "10.0.0",
           "Swashbuckle.AspNetCore": "10.1.7"
@@ -743,6 +744,7 @@
       },
       "ProductApi.Application/1.0.0": {
         "dependencies": {
+          "FluentValidation": "11.11.0",
           "MediatR": "14.1.0",
           "ProductApi.Domain": "1.0.0",
           "ProductApi.Infrastructure": "1.0.0"

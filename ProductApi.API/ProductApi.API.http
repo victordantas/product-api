@@ -1,6 +1,94 @@
 @ProductApi.API_HostAddress = http://localhost:5064
 
-GET {{ProductApi.API_HostAddress}}/weatherforecast/
+### Get all products (initially empty)
+GET {{ProductApi.API_HostAddress}}/products
 Accept: application/json
 
-###
+### Create a valid product
+POST {{ProductApi.API_HostAddress}}/products
+Content-Type: application/json
+
+{
+  "name": "Laptop",
+  "price": 999.99
+}
+
+### Create invalid product - empty name
+POST {{ProductApi.API_HostAddress}}/products
+Content-Type: application/json
+
+{
+  "name": "",
+  "price": 100
+}
+
+### Create invalid product - price <= 0
+POST {{ProductApi.API_HostAddress}}/products
+Content-Type: application/json
+
+{
+  "name": "Mouse",
+  "price": 0
+}
+
+### Get all products (should have one)
+GET {{ProductApi.API_HostAddress}}/products
+Accept: application/json
+
+### Get product by ID (use the ID from create response)
+GET {{ProductApi.API_HostAddress}}/products/{id}
+Accept: application/json
+
+### Get product by invalid ID
+GET {{ProductApi.API_HostAddress}}/products/00000000-0000-0000-0000-000000000000
+Accept: application/json
+
+### Update product (use valid ID)
+PUT {{ProductApi.API_HostAddress}}/products/{id}
+Content-Type: application/json
+
+{
+  "id": "{id}",
+  "name": "Gaming Laptop",
+  "price": 1299.99
+}
+
+### Update product - empty name
+PUT {{ProductApi.API_HostAddress}}/products/{id}
+Content-Type: application/json
+
+{
+  "id": "{id}",
+  "name": "",
+  "price": 1000
+}
+
+### Update product - price <= 0
+PUT {{ProductApi.API_HostAddress}}/products/{id}
+Content-Type: application/json
+
+{
+  "id": "{id}",
+  "name": "Laptop",
+  "price": 0
+}
+
+### Update product - ID mismatch
+PUT {{ProductApi.API_HostAddress}}/products/{id}
+Content-Type: application/json
+
+{
+  "id": "11111111-1111-1111-1111-111111111111",
+  "name": "New Laptop",
+  "price": 1500
+}
+
+### Delete product (use valid ID)
+DELETE {{ProductApi.API_HostAddress}}/products/{id}
+
+### Delete product - invalid ID
+DELETE {{ProductApi.API_HostAddress}}/products/00000000-0000-0000-0000-000000000000
+
+### Get all products (should be empty after delete)
+GET {{ProductApi.API_HostAddress}}/products
+Accept: application/json

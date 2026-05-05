@@ -30,6 +30,15 @@
           "lib/net8.0/Azure.Identity.dll": {}
         }
       },
+      "FluentValidation/11.9.2": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/FluentValidation.dll": {}
+        }
+      },
       "MediatR/14.1.0": {
         "type": "package",
         "dependencies": {
@@ -837,6 +846,25 @@
         "azureicon.png",
         "lib/net8.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.dll"
+      ]
+    },
+    "FluentValidation/11.9.2": {
+      "sha512": "XeHp9LvFvu1fsQ/NvDCymV02GOCB1nz7ZUhfpI3uMhCcHTkV1K5bMkv+Nc/kuNYyAsX5+5bcmUanIEMd5QN+Eg==",
+      "type": "package",
+      "path": "fluentvalidation/11.9.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.11.9.2.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net5.0/FluentValidation.dll",
+        "lib/net6.0/FluentValidation.dll",
+        "lib/net7.0/FluentValidation.dll",
+        "lib/net8.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.1/FluentValidation.dll"
       ]
     },
     "MediatR/14.1.0": {
@@ -1845,6 +1873,7 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "FluentValidation >= 11.9.2",
       "MediatR >= 14.1.0",
       "ProductApi.Domain >= 1.0.0",
       "ProductApi.Infrastructure >= 1.0.0"
@@ -1900,6 +1929,10 @@
       "net10.0": {
         "targetAlias": "net10.0",
         "dependencies": {
+          "FluentValidation": {
+            "target": "Package",
+            "version": "[11.9.2, )"
+          },
           "MediatR": {
             "target": "Package",
             "version": "[14.1.0, )"
