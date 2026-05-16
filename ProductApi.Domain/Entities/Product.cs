@@ -20,4 +20,6 @@ public class Product
         Name = name;
         Price = price;
     }
+
+    public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
 }

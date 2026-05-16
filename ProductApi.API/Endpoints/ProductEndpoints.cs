@@ -9,9 +9,9 @@ public static class ProductEndpoints
 {
     public static void MapProductEndpoints(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/products", async (IMediator mediator) =>
+        app.MapGet("/products", async (IMediator mediator, CancellationToken ct) =>
         {
-            var result = await mediator.Send(new GetProductsQuery());
+            var result = await mediator.Send(new GetProductsQuery(), ct);
             return Results.Ok(result);
         });
 

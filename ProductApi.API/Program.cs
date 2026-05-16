@@ -1,3 +1,4 @@
+using ProductApi.Application.Common.Interfaces;
 using ProductApi.Application.Products.Commands.CreateProduct;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using FluentValidation;
 using ProductApi.Application.Products.Commands.UpdateProduct;
 using ProductApi.Application.Products.Commands.DeleteProduct;
 using Serilog;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,8 +21,14 @@ builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBeh
 builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(typeof(CreateProductCommand).Assembly));
 
+var databasePath = Path.Combine(builder.Environment.ContentRootPath, "products.db");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!
+    .Replace("{ContentRootPath}", databasePath);
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=products.db"));
+    options.UseSqlite(connectionString));
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Host.UseSerilog((ctx, lc) => lc
     .WriteTo.Console()

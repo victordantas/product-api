@@ -16,3 +16,5 @@
 /workspaces/product-api/ProductApi.Infrastructure/obj/Debug/net10.0/ProductApi.Infrastructure.pdb
 /workspaces/product-api/ProductApi.Infrastructure/obj/Debug/net10.0/ProductApi.Infrastructure.genruntimeconfig.cache
 /workspaces/product-api/ProductApi.Infrastructure/obj/Debug/net10.0/ref/ProductApi.Infrastructure.dll
+/workspaces/product-api/ProductApi.Infrastructure/bin/Debug/net10.0/ProductApi.Application.dll
+/workspaces/product-api/ProductApi.Infrastructure/bin/Debug/net10.0/ProductApi.Application.pdb

@@ -1,24 +1,21 @@
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using ProductApi.Infrastructure.Persistence;
 using ProductApi.Application.Common.Dtos;
+using ProductApi.Application.Common.Interfaces;
 
 namespace ProductApi.Application.Products.Queries.GetProductById;
 
 public class GetProductByIdHandler : IRequestHandler<GetProductByIdQuery, ProductDto?>
 {
-    private readonly AppDbContext _context;
+    private readonly IProductRepository _repository;
 
-    public GetProductByIdHandler(AppDbContext context)
+    public GetProductByIdHandler(IProductRepository repository)
     {
-        _context = context;
+        _repository = repository;
     }
 
     public async Task<ProductDto?> Handle(GetProductByIdQuery request, CancellationToken ct)
     {
-        var product = await _context.Products
-            .AsNoTracking()
-            .FirstOrDefaultAsync(p => p.Id == request.Id, ct);
+        var product = await _repository.GetByIdAsync(request.Id, ct);
 
         if (product == null) return null;
 

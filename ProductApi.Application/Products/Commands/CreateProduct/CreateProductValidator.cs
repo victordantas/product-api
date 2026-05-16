@@ -8,6 +8,7 @@ public class CreateProductValidator : AbstractValidator<CreateProductCommand>
     {
         RuleFor(x => x.Name)
             .NotEmpty()
+            .Must(name=> !string.IsNullOrWhiteSpace(name))
             .MaximumLength(100);
 
         RuleFor(x => x.Price)

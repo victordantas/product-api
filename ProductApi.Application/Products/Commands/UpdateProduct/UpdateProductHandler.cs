@@ -1,28 +1,34 @@
 namespace ProductApi.Application.Products.Commands.UpdateProduct;
 
 using MediatR;
-using ProductApi.Domain.Entities;
-using ProductApi.Infrastructure.Persistence;
+using Microsoft.Extensions.Logging;
+using ProductApi.Application.Common.Interfaces;
 
 public class UpdateProductHandler : IRequestHandler<UpdateProductCommand, bool>
 {
-    private readonly AppDbContext _context;
+    private readonly IProductRepository _repository;
+    private readonly ILogger<UpdateProductHandler> _logger;
 
-    public UpdateProductHandler(AppDbContext context)
+    public UpdateProductHandler(IProductRepository repository, ILogger<UpdateProductHandler> logger)
     {
-        _context = context;
+        _repository = repository;
+        _logger = logger;
     }
 
     public async Task<bool> Handle(UpdateProductCommand request, CancellationToken ct)
     {
-        var product = await _context.Products.FindAsync(new object[] { request.Id }, ct);
+        _logger.LogInformation(
+            "Updating product {ProductName}",
+            request.Name);
+
+        var product = await _repository.GetByIdAsync(request.Id, ct);
 
         if (product == null)
             return false;
 
         product.Update(request.Name, request.Price);
 
-        await _context.SaveChangesAsync(ct);
+        await _repository.SaveChangesAsync(ct);
 
         return true;
     }

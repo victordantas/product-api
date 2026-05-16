@@ -1,23 +1,37 @@
 namespace ProductApi.Application.Products.Commands.CreateProduct;
 
 using MediatR;
+using Microsoft.Extensions.Logging;
+using ProductApi.Application.Common.Interfaces;
 using ProductApi.Domain.Entities;
-using ProductApi.Infrastructure.Persistence;
 
 public class CreateProductHandler : IRequestHandler<CreateProductCommand, Guid>
 {
-    private readonly AppDbContext _context;
+    private readonly IProductRepository _repository;
+    private readonly ILogger<CreateProductHandler> _logger;
 
-    public CreateProductHandler(AppDbContext context)
+    public CreateProductHandler(IProductRepository repository, ILogger<CreateProductHandler> logger)
     {
-        _context = context;
+        _repository = repository;
+        _logger = logger;
     }
 
     public async Task<Guid> Handle(CreateProductCommand request, CancellationToken ct)
     {
+        _logger.LogInformation(
+            "Creating product {ProductName} with price {ProductPrice}",
+            request.Name,
+            request.Price);
+
         var product = new Product(request.Name, request.Price);
-        _context.Products.Add(product);
-        await _context.SaveChangesAsync(ct);
+
+        await _repository.AddAsync(product, ct);
+        await _repository.SaveChangesAsync(ct);
+
+        _logger.LogInformation(
+            "Product created successfully with id {ProductId}",
+            product.Id);
+
         return product.Id;
     }
 }
