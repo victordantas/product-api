@@ -1,0 +1,12 @@
+/workspaces/product-api/ProductApi.Domain/bin/Release/net10.0/ProductApi.Domain.deps.json
+/workspaces/product-api/ProductApi.Domain/bin/Release/net10.0/ProductApi.Domain.dll
+/workspaces/product-api/ProductApi.Domain/bin/Release/net10.0/ProductApi.Domain.pdb
+/workspaces/product-api/ProductApi.Domain/obj/Release/net10.0/ProductApi.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/product-api/ProductApi.Domain/obj/Release/net10.0/ProductApi.Domain.AssemblyInfoInputs.cache
+/workspaces/product-api/ProductApi.Domain/obj/Release/net10.0/ProductApi.Domain.AssemblyInfo.cs
+/workspaces/product-api/ProductApi.Domain/obj/Release/net10.0/ProductApi.Domain.csproj.CoreCompileInputs.cache
+/workspaces/product-api/ProductApi.Domain/obj/Release/net10.0/ProductApi.Domain.sourcelink.json
+/workspaces/product-api/ProductApi.Domain/obj/Release/net10.0/ProductApi.Domain.dll
+/workspaces/product-api/ProductApi.Domain/obj/Release/net10.0/refint/ProductApi.Domain.dll
+/workspaces/product-api/ProductApi.Domain/obj/Release/net10.0/ProductApi.Domain.pdb
+/workspaces/product-api/ProductApi.Domain/obj/Release/net10.0/ref/ProductApi.Domain.dll
