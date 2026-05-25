@@ -1,18 +1,36 @@
-# Product API (Clean Architecture)
+# Product API
 
-## Overview
-Production-style REST API using .NET 10 and Clean Architecture.
+Production-style REST API built with .NET 10 using Clean Architecture and CQRS.
+
+## Features
+- CRUD operations
+- Validation pipeline
+- Structured logging
+- EF Core persistence
+- Global exception handling
+- Docker support
+- CI/CD pipeline
 
 ## Architecture
-- Domain: business rules
-- Application: use cases (CQRS)
-- Infrastructure: data access
-- API: entry point
+- Domain
+- Application
+- Infrastructure
+- API
 
 ## Tech Stack
 - .NET 10
 - EF Core
 - MediatR
+- FluentValidation
+- Serilog
+- SQLite
+- Docker
 
 ## Running
+
 dotnet run --project ProductApi.API
+
+## Docker
+
+docker build -t product-api .
+docker run -p 8080:8080 product-api

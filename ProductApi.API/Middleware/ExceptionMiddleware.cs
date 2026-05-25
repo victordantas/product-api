@@ -1,6 +1,8 @@
 using System.Net;
 using FluentValidation;
 
+namespace ProductApi.API.Middleware;
+
 public class ExceptionMiddleware
 {
     private readonly RequestDelegate _next;
@@ -20,16 +22,15 @@ public class ExceptionMiddleware
         {
             context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
 
-            var errors = ex.Errors.Select(e => new
-            {
-                e.PropertyName,
-                e.ErrorMessage
-            });
-
             await context.Response.WriteAsJsonAsync(new
             {
-                message = "Validation failed",
-                errors
+                title = "Validation Error",
+                status = 400,
+                errors = ex.Errors.Select(e => new
+                {
+                    e.PropertyName,
+                    e.ErrorMessage
+                })
             });
         }
         catch (Exception)
@@ -38,7 +39,8 @@ public class ExceptionMiddleware
 
             await context.Response.WriteAsJsonAsync(new
             {
-                message = "An unexpected error occurred"
+                title = "Server Error",
+                status = 500
             });
         }
     }

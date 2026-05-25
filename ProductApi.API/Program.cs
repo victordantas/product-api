@@ -3,13 +3,9 @@ using ProductApi.Application.Products.Commands.CreateProduct;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ProductApi.Infrastructure.Persistence;
-using ProductApi.Application.Products.Queries.GetProducts;
-using ProductApi.Application.Products.Queries.GetProductById;
 using FluentValidation;
-using ProductApi.Application.Products.Commands.UpdateProduct;
-using ProductApi.Application.Products.Commands.DeleteProduct;
 using Serilog;
-using System.IO;
+using ProductApi.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateProductValidator>();
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+builder.Services.AddHealthChecks();
 
 builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(typeof(CreateProductCommand).Assembly));
@@ -51,6 +48,7 @@ app.UseSwaggerUI(options =>
 
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseSerilogRequestLogging();
-
+app.MapHealthChecks("/health");
 app.MapProductEndpoints();
+
 app.Run();
