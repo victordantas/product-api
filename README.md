@@ -32,5 +32,5 @@ dotnet run --project ProductApi.API
 
 ## Docker
 
-docker build -t product-api .
+docker build -f ProductApi.API/Dockerfile -t product-api .
 docker run -p 8080:8080 product-api
